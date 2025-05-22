@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora de Huella de Carbono</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Calculadora de Huella de Carbono</h1>
+
+    <label for="usuario">Nombre de usuario:</label>
+    <input type="text" id="usuario" placeholder="Ej. oscar123">
+
+    <h2>¿Cuántos kilómetros recorres por semana?</h2>
+
+    <input type="number" id="auto" placeholder="Auto (km)">
+    <input type="number" id="bus" placeholder="Autobús (km)">
+    <input type="number" id="avion" placeholder="Avión (km)">
+    <input type="number" id="moto" placeholder="Motocicleta (km)">
+    <input type="number" id="bici_electrica" placeholder="Bici eléctrica (km)">
+
+    <button onclick="calcularHuella()">Calcular</button>
+
+    <div id="resultado"></div>
+    <div id="historial"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

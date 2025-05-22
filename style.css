@@ -1,0 +1,44 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  padding: 20px;
+  color: #333;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ccc;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #2b8a3e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #246f33;
+}
+
+#resultado, #historial {
+  margin-top: 20px;
+  background: #e6f2e6;
+  padding: 15px;
+  border-radius: 5px;
+}
