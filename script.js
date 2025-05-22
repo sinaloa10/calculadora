@@ -1,4 +1,4 @@
-const BACKEND_URL = "http://127.0.0.1:5000"; // reemplaza por tu URL real
+const BACKEND_URL = "https://calculadora-back.onrender.com/"; // reemplaza por tu URL real
 
 async function calcularHuella() {
   const usuario = document.getElementById("usuario").value.trim();
