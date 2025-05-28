@@ -1,31 +1,116 @@
+<!-- ===== index.html ===== -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Calculadora de Huella de Carbono</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EVA: Herramientas Ambientales</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"/>
+  <script defer src="script.js"></script>
 </head>
 <body>
-  <div class="container">
-    <h1>Calculadora de Huella de Carbono</h1>
+  <header class="header">
+    <h1 class="main-title">EVA: Salud Ambiental</h1>
+    <p class="subtitle">Impulsado por tecnología EVA y colaboración con DevCT</p>
+  </header>
 
-    <label for="usuario">Nombre de usuario:</label>
-    <input type="text" id="usuario" placeholder="Ej. oscar123">
+  <div class="dashboard-layout">
+    <!-- Panel Izquierdo -->
+    <div class="panel panel-izquierdo">
+      <h2>Transporte semanal (km)</h2>
+      <div class="input-group">
+        <input type="number" id="auto" placeholder="Auto" />
+        <input type="number" id="bus" placeholder="Autobús" />
+        <input type="number" id="avion" placeholder="Avión" />
+        <input type="number" id="moto" placeholder="Motocicleta" />
+        <input type="number" id="bici_electrica" placeholder="Bici eléctrica" />
+      </div>
+      <button id="btnCalcular">Calcular</button>
+      <div id="resultado" class="result-box"></div>
+      <div id="historial" class="result-box"></div>
+    </div>
 
-    <h2>¿Cuántos kilómetros recorres por semana?</h2>
+    <!-- Panel Derecho -->
+    <div class="panel panel-derecho">
+      <h2>Usuario</h2>
+      <div class="input-group">
+        <input type="text" id="usuario" placeholder="Ej. oscar123" />
+      </div>
+      <h2>Consumo adicional</h2>
+      <div class="input-group">
+        <input type="number" id="electricidad" placeholder="Electricidad (kWh/semana)" />
+        <input type="number" id="agua" placeholder="Agua (litros/semana)" />
+        <input type="number" id="compras" placeholder="Compras online (pedidos/mes)" />
+      </div>
+      <h2>Tipo de dieta</h2>
+      <div class="input-group">
+        <select id="dieta">
+          <option value="">Selecciona una opción</option>
+          <option value="vegana">Vegana</option>
+          <option value="vegetariana">Vegetariana</option>
+          <option value="mixta">Mixta</option>
+          <option value="carnivora">Carnívora</option>
+        </select>
+      </div>
+      <h2>Reciclaje</h2>
+      <div class="input-group">
+        <label><input type="checkbox" id="rec_papel" /> Papel</label>
+        <label><input type="checkbox" id="rec_plastico" /> Plástico</label>
+        <label><input type="checkbox" id="rec_vidrio" /> Vidrio</label>
+        <label><input type="checkbox" id="rec_electronico" /> Electrónico</label>
+      </div>
+    </div>
 
-    <input type="number" id="auto" placeholder="Auto (km)">
-    <input type="number" id="bus" placeholder="Autobús (km)">
-    <input type="number" id="avion" placeholder="Avión (km)">
-    <input type="number" id="moto" placeholder="Motocicleta (km)">
-    <input type="number" id="bici_electrica" placeholder="Bici eléctrica (km)">
+    <!-- Panel Abajo -->
+    <div class="panel panel-abajo">
+      <div class="dashboard">
+        <h2>Dashboard</h2>
+        <canvas id="graficaHuella" width="400" height="200"></canvas>
+      </div>
 
-    <button onclick="calcularHuella()">Calcular</button>
-
-    <div id="resultado"></div>
-    <div id="historial"></div>
+      <div class="chatbot-box">
+        <h2>Asistente Verde EVA 🌿</h2>
+        <div id="chatlog" class="chatlog"></div>
+        <div class="chatbot-input">
+          <input type="text" id="chatInput" placeholder="Escribe una pregunta ecológica..." />
+          <button id="btnEnviarChat">Enviar</button>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <script src="script.js"></script>
+  <!-- Sección Escáner de Productos -->
+  <section class="scanner-section">
+    <h2>Escáner de Productos 📷</h2>
+    <button id="btnIniciarScanner">Iniciar escaneo</button>
+    <div id="scanner-container">
+      <video id="video" autoplay playsinline></video>
+      <p id="codigo-detectado">Esperando escaneo...</p>
+    </div>
+
+    <!-- Formulario post-escaneo -->
+    <div id="formulario-producto">
+      <h3>Producto Detectado</h3>
+      <div id="producto-info"></div>
+      <label for="producto-id">ID:</label>
+      <input type="text" id="producto-id" readonly />
+      <label for="producto-nombre">Nombre:</label>
+      <input type="text" id="producto-nombre" placeholder="Ej. Cepillo ecológico" />
+      <button id="btnVerificarProducto">Verificar Producto</button>
+      <div id="resultado-verificacion"></div>
+    </div>
+  </section>
+
+  <!-- Mapa Verde Interactivo -->
+  <section class="mapa-section">
+    <h2>Mapa Verde Interactivo 📍</h2>
+    <div id="mapa"></div>
+  </section>
+
+  <div id="toast" class="toast"></div>
 </body>
 </html>

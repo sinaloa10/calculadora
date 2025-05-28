@@ -1,44 +1,242 @@
+/* ===== style.css ===== */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  background-color: #e7f8ec;
   color: #333;
+  line-height: 1.6;
 }
 
-.container {
-  max-width: 600px;
-  margin: auto;
-  background: white;
-  padding: 30px;
+.header {
+  text-align: center;
+  padding: 20px;
+  background-color: #d0f0d4;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.main-title {
+  font-size: 2.5rem;
+  color: #2d6a4f;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #4f772d;
+  margin-top: 5px;
+}
+
+.dashboard-layout {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  gap: 20px;
+}
+
+.panel {
+  background-color: #fff;
+  padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  min-width: 300px;
 }
 
-input {
-  display: block;
+.panel-abajo {
   width: 100%;
-  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 10px;
   margin: 10px 0;
-  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
 }
 
 button {
   padding: 10px 20px;
-  background-color: #2b8a3e;
+  background-color: #2d6a4f;
   color: white;
   border: none;
   border-radius: 5px;
-  font-size: 16px;
   cursor: pointer;
+  font-size: 1rem;
 }
 
 button:hover {
-  background-color: #246f33;
+  background-color: #245a3c;
 }
 
-#resultado, #historial {
-  margin-top: 20px;
-  background: #e6f2e6;
-  padding: 15px;
+.result-box {
+  margin-top: 15px;
+  background-color: #f0f9f1;
+  padding: 10px;
   border-radius: 5px;
+}
+
+.toast {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background-color: #4f772d;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  display: none;
+}
+
+.toast.show {
+  display: block;
+}
+
+.chatbot-box {
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.chatlog {
+  height: 150px;
+  overflow-y: auto;
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.chatbot-input {
+  display: flex;
+  gap: 10px;
+}
+
+.chatbot-input input {
+  flex: 1;
+}
+
+.loader {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Escáner */
+.scanner-section {
+  background-color: #f9fff9;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Mostramos el contenedor de video siempre que se active */
+#scanner-container {
+  display: flex;           /* se muestra como flex */
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+/* Video HTML5 para la cámara */
+#scanner-container video {
+  width: 100%;
+  max-width: 400px;
+  height: 300px;
+  border: 2px solid #2d6a4f;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+#codigo-detectado {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #1b4332;
+}
+
+/* Formulario escáner */
+#formulario-producto {
+  display: none;
+  background-color: #e3fbe6;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #b6e2c4;
+  margin-top: 10px;
+  width: 100%;
+  max-width: 400px;
+}
+
+#producto-info table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+#producto-info th,
+#producto-info td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+#producto-info p {
+  margin: 0;
+  padding: 8px;
+}
+
+#resultado-verificacion {
+  display: none;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.bueno {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.medio {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.malo {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* Mapa */
+.mapa-section {
+  padding: 20px;
+  margin: 20px;
+  background-color: #f0fdf0;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+#mapa {
+  width: 100%;
+  height: 400px;
+  border: 2px solid #2d6a4f;
+  border-radius: 10px;
+  margin-top: 10px;
 }
