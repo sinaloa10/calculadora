@@ -254,7 +254,7 @@ function generarGrafica(detalle) {
 
 // ——— Chatbot ecológico ———
 const respuestas = {
-  reciclar:       "Puedes reciclar papel, plástico, vidrio y electrónicos.",
+  "reciclar":"Puedes reciclar papel, plástico, vidrio y electrónicos.",
   "plantar árboles": "Los mejores lugares para plantar árboles son parques y jardines."
 };
 
@@ -265,7 +265,7 @@ document.getElementById("btnEnviarChat").addEventListener("click", () => {
   const log = document.getElementById("chatlog");
   log.innerHTML += `<p><strong>Tú:</strong> ${msg}</p>`;
   input.value = "";
-  let resp = "Lo siento, aún estoy aprendiendo.";
+  let resp = "Lo siento, por el momento estoy en desarrollo. Prueba con escribir en el chat: reciclar o plantar árboles";
   for (const clave in respuestas) {
     if (msg.toLowerCase().includes(clave)) {
       resp = respuestas[clave];
